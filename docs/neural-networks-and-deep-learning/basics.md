@@ -49,5 +49,51 @@ Loss function is defined for single training sample, while cost is defined for a
 Gradient of a point gives the direction with largest "uphill slope". By walking in the opposite direction, we go downhill on the cost surface as much greedy as we can.
 
 <p align="center">
-  <img height="200" src="./figs/gradient-descent.png">
+  <img height="250" src="https://github.com/xuwenzhe/deep-learning-coursera/blob/master/docs/neural-networks-and-deep-learning/figs/gradient-descent.png?raw=true">
 </p>
+
+The model parameter $w$, $b$ are updated iteratively as follows.
+
+$$
+w \leftarrow w - \alpha \frac{\partial J(w,b)}{\partial w}
+$$
+
+$$
+b \leftarrow b - \alpha \frac{\partial J(w,b)}{\partial b}
+$$
+
+**Note**: In the programming assignment, for simplicity, `dw` stands for $\frac{\partial J}{\partial w}$ and `db` stands for $\frac{\partial J}{\partial b}$
+
+****
+## Logistic Regression + Gradient Descent
+Forward: $\hat{y} = \sigma(z) = \sigma(w^\top x + b)$
+
+Loss: $L = -[y\log a + (1-y)\log(1-a)]$, where $a = \hat{y}$
+
+Backward:
+
+$$
+\frac{\partial L}{\partial a} = -\frac{y}{a} + \frac{1-y}{1-a}
+$$
+
+$$
+\frac{\partial L}{\partial z} = \frac{\partial L}{\partial a}\frac{\partial a}{\partial z} = [-\frac{y}{a} + \frac{1-y}{1-a}][a(1-a)] = (ay-y)+(a-ay) = a - y
+$$
+
+$$\boxed{
+\frac{\partial L}{\partial w} = (a-y)x
+}$$
+
+$$\boxed{
+\frac{\partial L}{\partial b} = a-y
+}$$
+
+Then, update with learning rate $\alpha$.
+
+****
+## Vectorization
+In short, avoid **explicit** `for` loop to leverage built-in speedup of any vector or matrix manipulation. That's when `numpy` comes to rescue. For example, a sigmoid transformation using model parameters $w$, $b$ for all samples can be calculated all at once as `A = sigmoid(w.T.dot(X) + b)`.
+
+A subtlety in python is adding `w.T.dot(X)` (row vector) and `b` (scalar) is legal due to **broadcasting**.
+
+Similarly, for back propagation `dw = X.dot((A - Y).T) / m` and `db = np.sum(A - Y) / m`
