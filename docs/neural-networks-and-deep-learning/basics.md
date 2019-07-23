@@ -1,4 +1,4 @@
-# Basic Concepts
+# Basics
 
 ## Notation
 
@@ -14,5 +14,7 @@ x^{(1)} & \cdots & x^{(m)} \\
 * $Y = \left[ \begin{array}{ccc}
 y^{(1)} & \cdots & y^{(m)} \\
 \end{array} \right]$ with shape $(1, m)$, training data. Note that by convention in this course, each column is a training label. 
+
+$\begin{bmatrix}a & b\\c & d\end{bmatrix}$
 
 ## Logistic Regression

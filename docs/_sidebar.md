@@ -1,4 +1,4 @@
 - **Neural Networks and Deep Learning**
-  - [神经网络基础](neural-networks-and-deep-learning/basic-concepts)
-  - [浅层神经网络](neural-networks-and-deep-learning/basic-concepts)
-  - [深层神经网络](neural-networks-and-deep-learning/basic-concepts)
+  - [Basic](neural-networks-and-deep-learning/basic)
+  - [Shallow](neural-networks-and-deep-learning/basic)
+  - [Deep](neural-networks-and-deep-learning/basic)
